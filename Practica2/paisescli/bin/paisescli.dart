@@ -19,7 +19,8 @@ void main(List<String> argumentos) async {
 
   switch (orden) {
     case "continentes":
-      await muestraContinentes();
+      // Puedes usar muestraContinentes() (con Future/then) o muestraContinentesSync() (con async/await)
+      await muestraContinentesSync();
       break;
     case "paises":
       if (argumentos.length < 2) {
@@ -44,7 +45,22 @@ void main(List<String> argumentos) async {
   }
 }
 
-Future<void> muestraContinentes() async {
+// Proporcionada en la plantilla (tratamiento con Future / .then)
+void muestraContinentes() {
+  repository
+      .getContinentes()
+      .then((continentes) {
+        for (var c in continentes) {
+          print('\x1B[32m${c.nombre}\x1B[0m - ${c.imagen ?? "Sin imagen"}');
+        }
+      })
+      .catchError((e) {
+        print('\x1B[31mError: $e\x1B[0m');
+      });
+}
+
+// Proporcionada en la plantilla (tratamiento con async/await)
+Future<void> muestraContinentesSync() async {
   try {
     var continentes = await repository.getContinentes();
     for (var c in continentes) {
@@ -55,6 +71,7 @@ Future<void> muestraContinentes() async {
   }
 }
 
+// Implementada por ti (vuestra tarea)
 Future<void> muestraPaises(String continente) async {
   try {
     var paises = await repository.getPaises(continente);
@@ -66,10 +83,11 @@ Future<void> muestraPaises(String continente) async {
   }
 }
 
+// Implementada por ti (vuestra tarea)
 Future<void> muestraInfoPais(String pais) async {
   try {
     var paisObj = await repository.infoPais(pais);
-    print(paisObj); // Utiliza el toString() formateado de la clase Pais
+    print(paisObj);
   } catch (e) {
     print('\x1B[31mError: $e\x1B[0m');
   }
