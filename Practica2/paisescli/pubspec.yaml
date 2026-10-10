@@ -1,0 +1,16 @@
+name: paisescli
+description: Aplicación consola para consultar paises y continentes.
+version: 1.0.0
+publish_to: 'none'
+
+
+environment:
+  sdk: ^3.13.5
+
+dependencies:
+  http: ^1.6.0
+  path: ^1.9.0
+
+dev_dependencies:
+  lints: ^6.0.0
+  test: ^1.25.6

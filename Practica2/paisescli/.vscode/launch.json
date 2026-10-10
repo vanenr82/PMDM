@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Paises - Continentes",
+            "request": "launch",
+            "type": "dart",
+            "program": "bin/paisescli.dart",
+            "args": ["continentes"]
+        },
+        {
+            "name": "Paises - Europa",
+            "request": "launch",
+            "type": "dart",
+            "program": "bin/paisescli.dart",
+            "args": ["paises", "Europa"]
+        },
+        {
+            "name": "Paises - Info Francia",
+            "request": "launch",
+            "type": "dart",
+            "program": "bin/paisescli.dart",
+            "args": ["infopais", "Francia"]
+        }
+    ]
+}
